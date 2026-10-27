@@ -1,0 +1,8 @@
+{
+  "name": "ADVANCE AI",
+  "description": "ADVANCE AI Signal Dashboard - Live Wingo, K3, TRX, and Pro VIP Prediction Server with 2D Human Brain Adaptive Engine.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

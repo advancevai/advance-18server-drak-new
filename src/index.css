@@ -1,0 +1,473 @@
+@import "tailwindcss";
+
+@layer theme {
+  :root, :host {
+    /* Cyberpunk Theme Colors */
+    --color-background: #020817;
+    --color-foreground: #FFFFFF;
+    --color-primary: #00FF88;
+    --color-primary-foreground: #000000;
+    --color-secondary: #050D24;
+    --color-card: #0B1E3B;
+    --color-muted: #061126;
+    --color-muted-foreground: #A9B8D0;
+    --color-border: #173B70;
+    --color-accent: #8B5CF6;
+    --color-cyan: #00E5FF;
+    --color-destructive: #FF3864;
+    --color-gold: #FFB700;
+
+    /* Specified Palette */
+    --color-deep-navy: #020817;
+    --color-midnight-blue: #050D24;
+    --color-neon-blue: #0057FF;
+    --color-electric-cyan: #00E5FF;
+    --color-neon-purple: #8B2CFF;
+    --color-soft-violet: #6D28D9;
+  }
+}
+
+/* Page Background Wrapper - Transparent to reveal animated living neon atmosphere */
+.futuristic-bg {
+  position: relative;
+  background-color: transparent;
+}
+
+.futuristic-panel {
+  background-color: #061126;
+  border: 1px solid #173B70;
+}
+
+/* =========================================================================
+   1. Slow Gradient Flow Canvas
+   ========================================================================= */
+.neon-gradient-canvas {
+  background: 
+    radial-gradient(circle at 15% 20%, rgba(0, 87, 255, 0.22) 0%, transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(139, 44, 255, 0.22) 0%, transparent 45%),
+    linear-gradient(135deg, #020817 0%, #050D24 40%, #081238 75%, #020817 100%);
+  background-size: 200% 200%;
+  animation: slowGradientFlow 18s ease-in-out infinite alternate;
+  will-change: background-position;
+}
+
+@keyframes slowGradientFlow {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* =========================================================================
+   2. Floating Ambient Glow Spots (Active, alive and luminous)
+   ========================================================================= */
+.ambient-glow-spot {
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.ambient-glow-1 {
+  animation: floatingGlow1 14s ease-in-out infinite alternate;
+}
+
+.ambient-glow-2 {
+  animation: floatingGlow2 16s ease-in-out infinite alternate;
+}
+
+.ambient-glow-3 {
+  animation: floatingGlow3 15s ease-in-out infinite alternate;
+}
+
+.ambient-glow-4 {
+  animation: floatingGlow4 18s ease-in-out infinite alternate;
+}
+
+@keyframes floatingGlow1 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate3d(55px, 65px, 0) scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-35px, 85px, 0) scale(0.95);
+    opacity: 0.82;
+  }
+}
+
+@keyframes floatingGlow2 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translate3d(-65px, -50px, 0) scale(1.18);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(35px, -65px, 0) scale(0.92);
+    opacity: 0.78;
+  }
+}
+
+@keyframes floatingGlow3 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.95);
+    opacity: 0.75;
+  }
+  50% {
+    transform: translate3d(45px, -55px, 0) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-35px, -25px, 0) scale(1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes floatingGlow4 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate3d(-45px, 45px, 0) scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(45px, -35px, 0) scale(0.94);
+    opacity: 0.75;
+  }
+}
+
+/* =========================================================================
+   3. Moving Cyber Laser Scanline traversing the background
+   ========================================================================= */
+.cyber-laser-beam {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 229, 255, 0.45) 30%,
+    rgba(139, 44, 255, 0.5) 70%,
+    transparent 100%
+  );
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.6), 0 0 28px rgba(139, 44, 255, 0.4);
+  animation: cyberLaserScan 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  will-change: top, opacity;
+}
+
+@keyframes cyberLaserScan {
+  0% {
+    top: -5%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.85;
+  }
+  90% {
+    opacity: 0.85;
+  }
+  100% {
+    top: 105%;
+    opacity: 0;
+  }
+}
+
+/* =========================================================================
+   4. Neon Edge Animation (Diagonal lines around screen edges)
+   ========================================================================= */
+.neon-edge-wrapper {
+  animation: neonEdgePulse 6s ease-in-out infinite;
+  will-change: opacity, filter;
+}
+
+@keyframes neonEdgePulse {
+  0%, 100% {
+    opacity: 0.5;
+    filter: drop-shadow(0 0 4px rgba(0, 229, 255, 0.4));
+  }
+  50% {
+    opacity: 0.95;
+    filter: drop-shadow(0 0 12px rgba(0, 229, 255, 0.75))
+           drop-shadow(0 0 22px rgba(139, 44, 255, 0.6));
+  }
+}
+
+/* =========================================================================
+   5. Futuristic Cyber Grid Layer
+   ========================================================================= */
+.neon-grid-layer {
+  background-image: 
+    linear-gradient(to right, rgba(0, 229, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(139, 44, 255, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 95% 85% at 50% 50%, black 40%, transparent 95%);
+  -webkit-mask-image: radial-gradient(ellipse 95% 85% at 50% 50%, black 40%, transparent 95%);
+  animation: gridBreathe 12s ease-in-out infinite alternate;
+  will-change: opacity;
+  pointer-events: none;
+}
+
+@keyframes gridBreathe {
+  0% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0.65;
+  }
+}
+
+/* =========================================================================
+   6. Card Hover: Gentle blue glow and slight lift
+   ========================================================================= */
+.vip-card,
+.vip-card-purple,
+.vip-card-green,
+.neon-card-hover {
+  background: #0B1E3B;
+  border: 1px solid #173B70;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px -5px rgba(2, 8, 23, 0.7), 0 0 0 1px rgba(23, 59, 112, 0.3);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+
+.vip-card:hover,
+.neon-card-hover:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 229, 255, 0.65);
+  box-shadow: 0 14px 34px -5px rgba(2, 8, 23, 0.85),
+              0 0 20px rgba(0, 87, 255, 0.25),
+              0 0 10px rgba(0, 229, 255, 0.2);
+}
+
+.vip-card-purple {
+  border-color: rgba(139, 92, 246, 0.35);
+}
+
+.vip-card-purple:hover {
+  transform: translateY(-2px);
+  border-color: #8B2CFF;
+  box-shadow: 0 14px 34px -5px rgba(2, 8, 23, 0.85),
+              0 0 22px rgba(139, 44, 255, 0.3),
+              0 0 10px rgba(0, 87, 255, 0.2);
+}
+
+.vip-card-green {
+  border-color: rgba(0, 255, 136, 0.35);
+}
+
+.vip-card-green:hover {
+  transform: translateY(-2px);
+  border-color: #00FF88;
+  box-shadow: 0 14px 34px -5px rgba(2, 8, 23, 0.85),
+              0 0 22px rgba(0, 255, 136, 0.3),
+              0 0 10px rgba(0, 87, 255, 0.2);
+}
+
+/* =========================================================================
+   7. Icon Glow: Soft, slow pulsing glow without altering native color
+   ========================================================================= */
+.neon-icon-glow {
+  animation: neonIconPulse 6s ease-in-out infinite;
+  will-change: filter;
+}
+
+@keyframes neonIconPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px currentColor);
+    opacity: 0.95;
+  }
+  50% {
+    filter: drop-shadow(0 0 6px currentColor) drop-shadow(0 0 12px currentColor);
+    opacity: 1;
+  }
+}
+
+/* Gradient Buttons */
+.btn-vip-gradient {
+  background: linear-gradient(135deg, #7000FF 0%, #008CFF 50%, #00FF88 100%);
+  border: 1px solid rgba(0, 229, 255, 0.6);
+  color: #FFFFFF;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  box-shadow: 0 4px 20px rgba(112, 0, 255, 0.35), 0 0 16px rgba(0, 140, 255, 0.3), 0 0 14px rgba(0, 255, 136, 0.25);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-vip-gradient:hover {
+  background: linear-gradient(135deg, #7000FF 0%, #00E5FF 55%, #00FF88 100%);
+  border-color: #00FF88;
+  box-shadow: 0 6px 26px rgba(0, 140, 255, 0.5), 0 0 24px rgba(0, 229, 255, 0.45), 0 0 22px rgba(0, 255, 136, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-vip-gradient:active {
+  transform: translateY(0px) scale(0.98);
+}
+
+/* Cyan Outline Button */
+.btn-vip-outline {
+  background: #0B1E3B;
+  border: 1px solid #173B70;
+  color: #A9B8D0;
+  transition: all 0.2s ease;
+}
+
+.btn-vip-outline:hover {
+  border-color: #00D9FF;
+  color: #FFFFFF;
+  box-shadow: 0 0 16px rgba(0, 217, 255, 0.25);
+}
+
+/* Glowing Circular Neon Ring System */
+.neon-ring-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.neon-ring-outer {
+  box-shadow: 0 0 30px rgba(0, 217, 255, 0.35), 0 0 60px rgba(139, 92, 246, 0.2), inset 0 0 25px rgba(0, 255, 136, 0.2);
+}
+
+.neon-pulse-ring {
+  animation: neon-pulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes neon-pulse {
+  0%, 100% {
+    opacity: 0.85;
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.4), 0 0 40px rgba(139, 92, 246, 0.25);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.03);
+    box-shadow: 0 0 35px rgba(0, 255, 136, 0.5), 0 0 60px rgba(0, 217, 255, 0.35);
+  }
+}
+
+/* Text glow utilities */
+.glow-text-cyan {
+  text-shadow: 0 0 14px rgba(0, 217, 255, 0.7);
+}
+
+.glow-text-green {
+  text-shadow: 0 0 14px rgba(0, 255, 136, 0.7);
+}
+
+.glow-text-purple {
+  text-shadow: 0 0 14px rgba(139, 92, 246, 0.7);
+}
+
+/* Badge Styles */
+.badge-win {
+  background-color: rgba(0, 255, 136, 0.15);
+  border: 1px solid rgba(0, 255, 136, 0.5);
+  color: #00FF88;
+}
+
+.badge-loss {
+  background-color: rgba(255, 56, 100, 0.15);
+  border: 1px solid rgba(255, 56, 100, 0.5);
+  color: #FF3864;
+}
+
+.badge-cyan {
+  background-color: rgba(0, 217, 255, 0.15);
+  border: 1px solid rgba(0, 217, 255, 0.5);
+  color: #00D9FF;
+}
+
+.badge-purple {
+  background-color: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.5);
+  color: #8B5CF6;
+}
+
+.badge-gold {
+  background-color: rgba(255, 183, 0, 0.15);
+  border: 1px solid rgba(255, 183, 0, 0.5);
+  color: #FFB700;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050D24;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #173B70;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00E5FF;
+}
+
+.fade-in {
+  animation: 0.25s ease-out fadeIn;
+}
+
+.animate-shake {
+  animation: 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both shake;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate(-2px); }
+  20%, 80% { transform: translate(3px); }
+  30%, 50%, 70% { transform: translate(-4px); }
+  40%, 60% { transform: translate(4px); }
+}
+
+/* =========================================================================
+   Respect prefers-reduced-motion
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .neon-gradient-canvas,
+  .ambient-glow-spot,
+  .neon-edge-wrapper,
+  .neon-particle,
+  .neon-grid-layer,
+  .neon-icon-glow {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .neon-particles-container {
+    display: none !important;
+  }
+}
